@@ -46,3 +46,7 @@ next-env.d.ts
 
 # generated at build time
 /src/logo-manifest.json
+
+# OpenNext / wrangler
+/.open-next/
+/.wrangler/

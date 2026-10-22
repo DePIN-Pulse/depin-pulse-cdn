@@ -1,12 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
-import logoFiles from '../../src/logo-manifest.json';
+import logoFiles from '../../logo-manifest.json';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+export function GET() {
   // Filter for image files and create URLs
   const images = logoFiles
     .filter(file => {
@@ -19,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       path: `/logos/${file}`
     }));
 
-  return res.status(200).json({
+  return Response.json({
     success: true,
     data: images
   });
