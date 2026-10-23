@@ -3,10 +3,12 @@ import logoFiles from '../../../logo-manifest.json';
 // Define supported extensions
 const supportedExtensions = ['.png', '.jpg', '.jpeg', '.svg', '.webp'];
 
-export function GET(request: Request, { params }: { params: { logoFile: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ logoFile: string }> }) {
+  const { logoFile } = await params;
+
   // Try to find the file with any supported extension
   const fileName = supportedExtensions
-    .map(ext => params.logoFile + ext)
+    .map(ext => logoFile + ext)
     .find(name => logoFiles.includes(name));
 
   if (!fileName) {

@@ -8,11 +8,6 @@ const config = {
   
   // Add any CDN-specific settings
   output: 'standalone',
-
-  eslint: {
-    // This disables ESLint during build
-    ignoreDuringBuilds: true,
-  },
 };
 
 module.exports = config; 
